@@ -42,5 +42,5 @@ jobs:
         username: ${{  secrets.USERNAME  }}
         password: ${{  secrets.PASSWORD  }}
         port:  ${{  secrets.SSH_PORT  }}
-        script: sudo sh /home/ubuntu/dev-hi.deploy.sh
+        script: sudo sh /root/dev-hi.deploy.sh
     
