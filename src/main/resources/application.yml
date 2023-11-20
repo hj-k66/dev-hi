@@ -1,0 +1,14 @@
+spring:
+    mvc:
+        pathmatch:
+            matching-strategy: ant_path_matcher
+    datasource:
+        url: jdbc:mysql://localhost:3306/dev-hi
+        username: root
+        password: pass
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    jpa:
+        show-sql: true
+        database-platform: org.hibernate.dialect.MySQL8Dialect
+        database: mysql
+        hibernate.ddl-auto: validate
