@@ -1,5 +1,18 @@
-FROM openjdk:17-jdk-alpine
+FROM openjdk:17-alpine
+
 WORKDIR /app
-COPY --chmod=755 ./*-SNAPSHOT.jar ./application.jar
+
+# 빌더 이미지에서 jar 파일만 복사
+COPY ./build/libs/*-SNAPSHOT.jar ./app.jar
+
 EXPOSE 8080
-CMD ["java","-jar","application.jar"]
+
+# root 대신 nobody 권한으로 실행
+USER nobody
+ENTRYPOINT [                                                \
+   "java",                                                 \
+   "-jar",                                                 \
+   "-Djava.security.egd=file:/dev/./urandom",              \
+   "-Dsun.net.inetaddr.ttl=0",                             \
+   "app.jar"              \
+]
